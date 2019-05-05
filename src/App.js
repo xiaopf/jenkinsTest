@@ -8,7 +8,7 @@ class App extends Component {
 
     return (
       <div style={{width:'100%',textAlign:'center',fontSize:'40px',paddingTop:'20px'}}>
-          Hello lalalalla Jenkins!!!
+          Hello lalala成功啦么lla Jenkins!!!
           <img src={arrow} alt="d" />
       </div>
     );
