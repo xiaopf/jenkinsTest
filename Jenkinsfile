@@ -14,11 +14,16 @@ pipeline {
       }
     }
     stage('dockerize') {
+       agent {
+            docker {
+            image 'gitlab/gitlab-ce:latest'
+            }
+        }
       steps {
-        sh '/usr/bin/git submodule init'
-        sh '/usr/bin/git submodule update'
+        sh 'git submodule init'
+        sh 'git submodule update'
         sh 'cd dockerize'
-        sh '/usr/bin/git pull origin master'
+        sh 'git pull origin master'
         sh 'cd ..'
       }
     }
