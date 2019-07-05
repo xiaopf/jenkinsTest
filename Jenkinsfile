@@ -7,7 +7,7 @@ pipeline {
 
   }
   stages {
-    stage('build') {
+    stage('buildss') {
       steps {
         sh 'node -v'
         sh 'npm -v'
