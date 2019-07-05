@@ -1,21 +1,26 @@
 pipeline {
-    agent none
-    stages {
-        stage('Back-end') {
-            agent {
-                docker { image 'maven:3-alpine' }
-            }
-            steps {
-                sh 'mvn --version'
-            }
-        }
-        stage('Front-end') {
-            agent {
-                docker { image 'node:7-alpine' }
-            }
-            steps {
-                sh 'node --version'
-            }
-        }
+  agent none
+  stages {
+
+    stage('dockerize') {
+       
+      steps {
+        sh '/usr/bin/git submodule init'
+        sh '/usr/bin/git submodule update'
+        sh 'cd dockerize'
+        sh '/usr/bin/git pull origin master'
+        sh 'cd ..'
+      }
     }
+    stage('build') {
+      steps {
+        sh 'npm run build'
+      }
+    }
+    stage('docker image') {
+      steps {
+        sh 'docker build -t test -f ./dockerize/Dockerfile .'
+      }
+    }
+  }
 }
