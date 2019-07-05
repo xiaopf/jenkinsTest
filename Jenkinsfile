@@ -1,7 +1,8 @@
 pipeline {
   agent {
-    node {
-      label 'nodejs'
+    docker {
+      image 'node:12.6.0-alpine'
+      args '-p 3000:3000'
     }
 
   }
@@ -13,5 +14,8 @@ pipeline {
         sh 'npm install'
       }
     }
+  }
+  tools {
+    nodejs 'nodejs'
   }
 }
