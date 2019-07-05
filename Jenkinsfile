@@ -1,12 +1,11 @@
 pipeline {
   agent none
   stages {
-   
+
     stage('dockerize') {
        agent {
             docker {
             image 'alpine/git'
-            args '-p 3000:3000'
             }
         }
       steps {
