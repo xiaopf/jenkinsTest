@@ -16,10 +16,10 @@ pipeline {
     }
     stage('dockerize') {
       steps {
-        sh 'git submodule init'
-        sh 'git submodule update'
+        sh '/usr/bin/git submodule init'
+        sh '/usr/bin/git submodule update'
         sh 'cd dockerize'
-        sh 'git pull origin master'
+        sh '/usr/bin/git pull origin master'
         sh 'cd ..'
       }
     }
