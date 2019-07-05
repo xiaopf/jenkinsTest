@@ -11,8 +11,7 @@ pipeline {
       steps {
         sh 'node -v'
         sh 'npm -v'
-        sh 'git -v'
-        sh 'git -v'
+        sh 'npm install'
       }
     }
     stage('dockerize') {
