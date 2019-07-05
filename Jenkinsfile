@@ -17,7 +17,7 @@ pipeline {
     stage('dockerize') {
        agent {
             docker {
-            image 'alpine/git:latest'
+            image 'alpine/git'
             args '-p 3000:3000'
             }
         }
