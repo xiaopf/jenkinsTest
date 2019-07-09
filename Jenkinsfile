@@ -1,13 +1,19 @@
 pipeline {
   agent none
   stages {
-
-    stage('dockerize') {
-       agent {
+    stage('install') {
+        agent {
             docker {
-            image 'alpine/git:latest'
+            image 'node:12.6.0-alpine'
             }
         }
+      steps {
+        sh 'node -v'
+        sh 'npm -v'
+        // sh 'npm install'
+      }
+    }
+    stage('dockerize') {
       steps {
         sh 'git submodule init'
         sh 'git submodule update'
