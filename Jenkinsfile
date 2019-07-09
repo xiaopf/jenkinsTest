@@ -16,7 +16,7 @@ pipeline {
     stage('dockerize') {
        agent {
             docker {
-            image 'gitlab/gitlab-ce:latest'
+            image 'alpine/git:latest'
             }
         }
       steps {
