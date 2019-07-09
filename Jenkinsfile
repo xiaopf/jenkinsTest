@@ -10,6 +10,10 @@ pipeline {
     stage('test') {
       steps {
         sh 'node -v'
+      }
+    }
+    stage('test') {
+      steps {
         sh 'git --version'
       }
     }
