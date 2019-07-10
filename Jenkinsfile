@@ -31,11 +31,9 @@ pipeline {
         sh 'docker build -t jenkinstest -f ./dockerize/Dockerfile .'
       }
     }
-    stage('push docker') {
+    stage('run docker') {
       steps {
-        sh 'docker login'
-        sh 'docker tag jenkinstest xiaopf/jenkinstest'
-        sh 'docker push xiaopf/jenkinstest'
+        sh 'docker run -d -p 8080:80 jenkinstest'
       }
     }
   }
