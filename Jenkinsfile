@@ -6,8 +6,6 @@ pipeline {
         sh 'node -v'
       }
     }
-  }
-  stages {
     stage('git') {
       steps {
         sh 'git --version'
