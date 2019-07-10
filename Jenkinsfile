@@ -20,11 +20,20 @@ pipeline {
     stage('build') {
       steps {
         sh 'npm run build'
+        sh 'ls'
       }
     }
     stage('docker') {
       steps {
+        sh 'cp -r build ./dockerize'
         sh 'docker build -t jenkinstest -f ./dockerize/Dockerfile .'
+      }
+    }
+    stage('push docker') {
+      steps {
+        sh 'docker login'
+        sh 'docker tag jenkinstest xiaopf/jenkinstest'
+        sh 'docker push xiaopf/jenkinstest'
       }
     }
   }
