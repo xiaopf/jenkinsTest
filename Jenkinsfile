@@ -13,8 +13,10 @@ pipeline {
         sh "git submodule init"
         sh "git submodule update"
         sh "cd dockerize"
+        sh "ls"
         sh "git pull origin master"
         sh "cd .."
+        sh "ls"
       }
     }
     stage('build') {
