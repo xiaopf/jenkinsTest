@@ -1,15 +1,29 @@
 pipeline {
   agent any
-  tools {nodejs "nodejs"}
   stages {
-    stage('node') {
+    stage('install') {
       steps {
         sh 'node -v'
+        sh 'npm install'
       }
     }
-    stage('git') {
+    stage('docker file') {
       steps {
-        sh 'git --version'
+        sh "git submodule init"
+        sh "git submodule update"
+        sh "cd dockerize"
+        sh "git pull origin master"
+        sh "cd .."
+      }
+    }
+    stage('build') {
+      steps {
+        sh 'npm run build'
+      }
+    }
+    stage('docker') {
+      steps {
+        sh 'docker build -t jenkinsTest -f ./dockerize/Dockerfile .'
       }
     }
   }
