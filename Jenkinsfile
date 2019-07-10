@@ -4,6 +4,7 @@ pipeline {
     stage('install') {
       steps {
         sh 'node -v'
+        sh 'cd jenkinsTest'
         sh 'npm install'
       }
     }
