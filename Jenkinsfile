@@ -33,7 +33,7 @@ pipeline {
     }
     stage('run docker') {
       steps {
-        sh 'docker run -d -p 8080:80 jenkinstest'
+        sh 'docker run -d -p 8001:80 jenkinstest'
       }
     }
   }
